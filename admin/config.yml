@@ -5,7 +5,7 @@ backend:
 local_backend: true
 
 media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+public_folder: "assets/uploads"
 
 collections:
   - name: "site"

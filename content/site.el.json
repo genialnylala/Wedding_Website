@@ -2,14 +2,14 @@
   "heroTitle": "Eva & Franek",
   "heroSubtitle": "Παντρευόμαστε και ανυπομονούμε να γιορτάσουμε μαζί σας στην Πάτμο!",
   "weddingDate": "Σάββατο, 5 Ιουνίου 2027, 16:00",
-  "heroImageUrl": "/assets/uploads/hero-photo.jpg",
+  "heroImageUrl": "assets/uploads/hero-photo.jpg",
   "photos": [
-    "/assets/uploads/hero-photo.jpg",
-    "/assets/uploads/gallery-1.jpg",
-    "/assets/uploads/gallery-2.jpg",
-    "/assets/uploads/gallery-3.png"
+    "assets/uploads/hero-photo.jpg",
+    "assets/uploads/gallery-1.jpg",
+    "assets/uploads/gallery-2.jpg",
+    "assets/uploads/gallery-3.png"
   ],
-  "videoUrl": "/assets/uploads/video_wind.mp4",
+  "videoUrl": "assets/uploads/video_wind.mp4",
   "story": "Την πρώτη φορά που τον είδα, περιμέναμε και οι δύο στην ίδια πύλη για μια πτήση προς τη Ρώμη. Θυμάμαι να τον κοιτάζω και να σκέφτομαι: «Τι όμορφος που είναι». Όταν έφτασα στη θέση μου και είδα ότι η δίπλα θέση ήταν άδεια, σκέφτηκα πόσο απίστευτο θα ήταν αν καθόταν εκεί.\n\nΚαι κάθισε. Αρχίσαμε να μιλάμε, μου ζήτησε το τηλέφωνό μου και μετά ο καθένας συνέχισε τον δρόμο του. Ήμουν σίγουρη ότι δεν θα ξαναμιλούσαμε ποτέ. Τον σκεφτόμουν πού και πού, αλλά τελικά έμεινε μια ακόμα «χαμένη ευκαιρία». Ύστερα από λίγους μήνες, εντελώς ξαφνικά, μου έστειλε μήνυμα: «Καλή Χρονιά». Από εκείνο το σημείο και μετά ήταν σαν να μην είχε περάσει ούτε μια μέρα.",
   "rsvpUrl": "https://withjoy.com/eva-and-franek",
   "footerNote": "Με αγάπη, Eva & Franek"

@@ -3,6 +3,7 @@ const byId = (id) => document.getElementById(id);
 const SUPPORTED_LANGS = ["en", "pl", "el"];
 const DEFAULT_LANG = "en";
 const LANGUAGE_KEY = "wedding-site-language";
+const SITE_BASE_URL = new URL(".", window.location.href);
 
 const UI_TEXT = {
   en: {
@@ -55,6 +56,23 @@ async function fetchJson(path) {
     throw new Error(`Failed to load ${path}: ${response.status} ${response.statusText}`);
   }
   return response.json();
+}
+
+function resolveAssetUrl(input) {
+  if (typeof input !== "string") {
+    return "";
+  }
+  const value = input.trim();
+  if (!value) {
+    return "";
+  }
+  if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(value)) {
+    return value;
+  }
+  if (value.startsWith("/")) {
+    return new URL(value.slice(1), SITE_BASE_URL).toString();
+  }
+  return value;
 }
 
 function setText(id, value) {
@@ -193,7 +211,9 @@ function renderFaq(faqItems) {
 
 function renderDispersedPhotos(photos) {
   const containers = document.querySelectorAll(".photo-scatter");
-  const validPhotos = (Array.isArray(photos) ? photos : []).filter((photo) => typeof photo === "string" && photo.trim());
+  const validPhotos = (Array.isArray(photos) ? photos : [])
+    .map((photo) => resolveAssetUrl(photo))
+    .filter(Boolean);
   const rotations = ["-2deg", "1.8deg", "-1.2deg", "2.2deg", "-1.6deg"];
   let photoIndex = 0;
 
@@ -275,7 +295,7 @@ function renderHeroMedia(videoUrl) {
     throw new Error("Missing hero media container.");
   }
 
-  const value = typeof videoUrl === "string" ? videoUrl.trim() : "";
+  const value = resolveAssetUrl(videoUrl);
   container.innerHTML = "";
   if (!value) {
     return;
@@ -309,11 +329,12 @@ function renderHeroMedia(videoUrl) {
 }
 
 function setHeroBackground(imageUrl) {
-  if (typeof imageUrl !== "string" || !imageUrl.trim()) {
+  const resolvedImageUrl = resolveAssetUrl(imageUrl);
+  if (!resolvedImageUrl) {
     document.documentElement.style.removeProperty("--hero-image");
     return;
   }
-  const safeUrl = imageUrl.replace(/"/g, '\\"');
+  const safeUrl = resolvedImageUrl.replace(/"/g, '\\"');
   document.documentElement.style.setProperty("--hero-image", `url("${safeUrl}")`);
 }
 

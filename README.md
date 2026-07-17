@@ -15,6 +15,11 @@ This is a static wedding website scaffold with Decap CMS for editing content.
 - `photos`: gallery image path list (local uploads go to `assets/uploads`)
 - `videoUrl`: YouTube/Vimeo/direct video URL
 
+Media paths work with GitHub Pages project URLs (for example `https://<user>.github.io/<repo>/`) and can be stored as either:
+
+- `assets/uploads/file.jpg` (preferred)
+- `/assets/uploads/file.jpg` (still supported by runtime normalization)
+
 ## Languages
 
 The site supports three languages:
