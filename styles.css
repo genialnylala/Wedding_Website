@@ -34,10 +34,8 @@ body {
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding: 1.2rem 1rem 9.8rem;
-  min-height: 88vh;
-  display: grid;
-  align-items: center;
+  padding: 0 1rem;
+  min-height: 100vh;
   background:
     linear-gradient(180deg, rgba(25, 16, 12, 0.16), rgba(25, 16, 12, 0.42)),
     radial-gradient(circle at 20% 20%, rgba(255, 250, 244, 0.25), transparent 44%),
@@ -69,24 +67,37 @@ body {
   position: relative;
   z-index: 1;
   width: min(930px, 94vw);
+  min-height: 100vh;
   margin: 0 auto;
-  padding: 1.2rem 1.2rem 3.1rem;
-  border: 1px solid rgba(255, 244, 234, 0.36);
-  border-radius: 34px;
-  background: rgba(247, 238, 230, 0.57);
-  backdrop-filter: blur(5px);
+}
+
+.hero-top {
+  position: absolute;
+  top: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(930px, 94vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
 }
 
 .top-nav {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.35rem;
+  margin-bottom: 0;
   flex-wrap: wrap;
+  padding: 0.8rem 1rem;
+  border-radius: 18px;
+  background: rgba(96, 68, 52, 0.56);
+  border: 1px solid rgba(255, 236, 220, 0.3);
+  backdrop-filter: blur(6px);
 }
 
 .top-nav a {
-  color: #55483e;
+  color: #fffaf5;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.8rem;
@@ -94,28 +105,30 @@ body {
   text-transform: uppercase;
   padding: 0.32rem 0.2rem;
   border-bottom: 1px solid transparent;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
 .top-nav a:hover {
-  color: #2d2521;
-  border-bottom-color: rgba(143, 109, 89, 0.8);
+  color: #ffffff;
+  border-bottom-color: rgba(255, 245, 234, 0.92);
 }
 
 .language-switcher {
   display: inline-flex;
   gap: 0.3rem;
   padding: 0.26rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   border-radius: 999px;
-  background: rgba(255, 253, 250, 0.67);
-  border: 1px solid rgba(154, 124, 108, 0.32);
+  background: rgba(96, 68, 52, 0.68);
+  border: 1px solid rgba(255, 236, 220, 0.34);
+  backdrop-filter: blur(6px);
 }
 
 .lang-btn {
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: #5a4a44;
+  color: #fff8f1;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -124,7 +137,7 @@ body {
 }
 
 .lang-btn:hover {
-  background: rgba(131, 94, 80, 0.12);
+  background: rgba(255, 247, 239, 0.18);
 }
 
 .lang-btn.is-active {
@@ -142,14 +155,21 @@ body {
 }
 
 h1 {
-  margin: 0.55rem 0 1.2rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(930px, 94vw);
   font-family: "Great Vibes", "Brush Script MT", "Segoe Script", cursive;
   font-size: clamp(3.1rem, 9.2vw, 7rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 0.88;
-  color: #3b2f2a;
-  text-shadow: 0 2px 14px rgba(255, 248, 239, 0.34);
+  color: #fffdf9;
+  text-shadow:
+    0 3px 16px rgba(20, 12, 9, 0.45),
+    0 0 2px rgba(20, 12, 9, 0.4);
 }
 
 .subtitle {
@@ -181,9 +201,17 @@ h1 {
 
 main {
   width: min(980px, 93vw);
-  margin: -6.3rem auto 3.2rem;
+  margin: 1.6rem auto 3.2rem;
   display: grid;
   gap: 1.15rem;
+}
+
+.hero-details {
+  text-align: center;
+}
+
+.hero-details .subtitle {
+  margin-bottom: 0;
 }
 
 .card {
@@ -365,16 +393,20 @@ h2 {
 
 @media (max-width: 820px) {
   .hero {
-    min-height: auto;
-    padding-bottom: 7.6rem;
+    min-height: 100svh;
+    padding: 0 0.7rem;
   }
 
   .hero-overlay {
-    border-radius: 24px;
+    min-height: 100svh;
+  }
+
+  .hero-top {
+    top: 0.9rem;
   }
 
   main {
-    margin-top: -4.4rem;
+    margin-top: 1.2rem;
   }
 
   .split-layout {
@@ -400,8 +432,8 @@ h2 {
 
 @media (max-width: 520px) {
   .hero {
-    padding-top: 0.8rem;
-    padding-bottom: 5.4rem;
+    min-height: 100svh;
+    padding: 0 0.6rem;
   }
 
   .top-nav {
@@ -414,6 +446,10 @@ h2 {
 
   .card {
     padding: 1.3rem 1rem 1.45rem;
+  }
+
+  main {
+    margin-top: 3.2rem;
   }
 
   .photo-scatter {
