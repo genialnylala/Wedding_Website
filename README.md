@@ -11,8 +11,8 @@ This is a static wedding website scaffold with Decap CMS for editing content.
 
 `content/site*.json` also supports media fields:
 
-- `heroImageUrl`: hero background image
-- `photos`: gallery image URL list
+- `heroImageUrl`: hero background image path (local uploads go to `assets/uploads`)
+- `photos`: gallery image path list (local uploads go to `assets/uploads`)
 - `videoUrl`: YouTube/Vimeo/direct video URL
 
 ## Languages
