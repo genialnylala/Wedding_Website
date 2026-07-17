@@ -19,6 +19,12 @@ collections:
           - { label: "Hero title", name: "heroTitle", widget: "string" }
           - { label: "Hero subtitle", name: "heroSubtitle", widget: "text" }
           - { label: "Wedding date", name: "weddingDate", widget: "string" }
+          - { label: "Hero image URL", name: "heroImageUrl", widget: "string" }
+          - label: "Photo URLs"
+            name: "photos"
+            widget: "list"
+            field: { label: "Photo URL", name: "photo", widget: "string" }
+          - { label: "Video URL", name: "videoUrl", widget: "string", required: false }
           - { label: "Story", name: "story", widget: "text" }
           - { label: "RSVP URL", name: "rsvpUrl", widget: "string" }
           - { label: "Footer note", name: "footerNote", widget: "string" }

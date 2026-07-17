@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -21,6 +21,8 @@
           <nav class="top-nav">
             <a href="#our-story" data-i18n="navStory">Our Story</a>
             <a href="#schedule" data-i18n="navSchedule">Schedule</a>
+            <a href="#gallery" data-i18n="navGallery">Gallery</a>
+            <a href="#video" data-i18n="navVideo">Video</a>
             <a href="#travel" data-i18n="navTravel">Travel</a>
             <a href="#faq">Q&A</a>
           </nav>
@@ -40,6 +42,18 @@
           <p class="section-label" data-i18n="storyLabel">Who are we?</p>
           <h2 data-i18n="storyTitle">Our Story</h2>
           <p id="story-text"></p>
+        </section>
+
+        <section id="gallery" class="section card animate-up">
+          <p class="section-label" data-i18n="galleryLabel">Photos</p>
+          <h2 data-i18n="galleryTitle">Gallery</h2>
+          <div id="gallery-grid" class="gallery-grid"></div>
+        </section>
+
+        <section id="video" class="section card animate-up">
+          <p class="section-label" data-i18n="videoLabel">Video</p>
+          <h2 data-i18n="videoTitle">Our Video</h2>
+          <div id="video-container" class="video-container"></div>
         </section>
 
         <section id="schedule" class="section card animate-up">

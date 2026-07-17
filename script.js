@@ -8,9 +8,15 @@ const UI_TEXT = {
   en: {
     navStory: "Our Story",
     navSchedule: "Schedule",
+    navGallery: "Gallery",
+    navVideo: "Video",
     navTravel: "Travel",
     storyLabel: "Who are we?",
     storyTitle: "Our Story",
+    galleryLabel: "Photos",
+    galleryTitle: "Gallery",
+    videoLabel: "Video",
+    videoTitle: "Our Video",
     scheduleLabel: "Schedule",
     scheduleTitle: "Wedding Weekend",
     travelLabel: "Travel",
@@ -22,9 +28,15 @@ const UI_TEXT = {
   pl: {
     navStory: "Nasza historia",
     navSchedule: "Plan",
+    navGallery: "Galeria",
+    navVideo: "Wideo",
     navTravel: "Podróż",
     storyLabel: "Kim jesteśmy?",
     storyTitle: "Nasza historia",
+    galleryLabel: "Zdjęcia",
+    galleryTitle: "Galeria",
+    videoLabel: "Wideo",
+    videoTitle: "Nasz film",
     scheduleLabel: "Plan",
     scheduleTitle: "Weekend ślubny",
     travelLabel: "Podróż",
@@ -36,9 +48,15 @@ const UI_TEXT = {
   el: {
     navStory: "Η ιστορία μας",
     navSchedule: "Πρόγραμμα",
+    navGallery: "Φωτογραφίες",
+    navVideo: "Βίντεο",
     navTravel: "Ταξίδι",
     storyLabel: "Ποιοι είμαστε;",
     storyTitle: "Η ιστορία μας",
+    galleryLabel: "Φωτογραφίες",
+    galleryTitle: "Γκαλερί",
+    videoLabel: "Βίντεο",
+    videoTitle: "Το βίντεό μας",
     scheduleLabel: "Πρόγραμμα",
     scheduleTitle: "Πρόγραμμα γάμου",
     travelLabel: "Ταξίδι",
@@ -191,6 +209,126 @@ function renderFaq(faqItems) {
   }
 }
 
+function setSectionVisibility(id, isVisible) {
+  const section = byId(id);
+  if (!section) {
+    throw new Error(`Missing section element: #${id}`);
+  }
+  section.hidden = !isVisible;
+}
+
+function renderGallery(photos) {
+  const grid = byId("gallery-grid");
+  if (!grid) {
+    throw new Error("Missing gallery grid element.");
+  }
+
+  const validPhotos = (Array.isArray(photos) ? photos : []).filter((photo) => typeof photo === "string" && photo.trim());
+  grid.innerHTML = "";
+  setSectionVisibility("gallery", validPhotos.length > 0);
+
+  for (const photoUrl of validPhotos) {
+    const item = document.createElement("figure");
+    item.className = "gallery-item";
+
+    const image = document.createElement("img");
+    image.src = photoUrl;
+    image.alt = "Wedding photo";
+    image.loading = "lazy";
+    image.decoding = "async";
+
+    item.append(image);
+    grid.appendChild(item);
+  }
+}
+
+function toEmbedUrl(videoUrl) {
+  const url = videoUrl.trim();
+  const youtubeShort = url.match(/^https?:\/\/(?:www\.)?youtu\.be\/([^?&/]+)/i);
+  if (youtubeShort) {
+    return `https://www.youtube-nocookie.com/embed/${youtubeShort[1]}`;
+  }
+
+  const youtubeWatch = url.match(/^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([^?&/]+)/i);
+  if (youtubeWatch) {
+    return `https://www.youtube-nocookie.com/embed/${youtubeWatch[1]}`;
+  }
+
+  const youtubeEmbed = url.match(/^https?:\/\/(?:www\.)?youtube(?:-nocookie)?\.com\/embed\/([^?&/]+)/i);
+  if (youtubeEmbed) {
+    return `https://www.youtube-nocookie.com/embed/${youtubeEmbed[1]}`;
+  }
+
+  const vimeoPlayer = url.match(/^https?:\/\/player\.vimeo\.com\/video\/([0-9]+)/i);
+  if (vimeoPlayer) {
+    return `https://player.vimeo.com/video/${vimeoPlayer[1]}`;
+  }
+
+  const vimeo = url.match(/^https?:\/\/(?:www\.)?vimeo\.com\/([0-9]+)/i);
+  if (vimeo) {
+    return `https://player.vimeo.com/video/${vimeo[1]}`;
+  }
+
+  return null;
+}
+
+function renderVideo(videoUrl) {
+  const container = byId("video-container");
+  if (!container) {
+    throw new Error("Missing video container element.");
+  }
+
+  const value = typeof videoUrl === "string" ? videoUrl.trim() : "";
+  container.innerHTML = "";
+  if (!value) {
+    setSectionVisibility("video", false);
+    return;
+  }
+
+  setSectionVisibility("video", true);
+  const isDirectVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(value);
+  if (isDirectVideo) {
+    const video = document.createElement("video");
+    video.className = "embedded-video";
+    video.controls = true;
+    video.preload = "metadata";
+    video.src = value;
+    container.appendChild(video);
+    return;
+  }
+
+  const embedUrl = toEmbedUrl(value);
+  if (embedUrl) {
+    const iframe = document.createElement("iframe");
+    iframe.className = "embedded-video";
+    iframe.src = embedUrl;
+    iframe.title = "Wedding video";
+    iframe.loading = "lazy";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.allowFullscreen = true;
+    container.appendChild(iframe);
+    return;
+  }
+
+  const link = document.createElement("a");
+  link.href = value;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.className = "button";
+  link.textContent = "Open video";
+  container.appendChild(link);
+}
+
+function setHeroBackground(imageUrl) {
+  if (typeof imageUrl !== "string" || !imageUrl.trim()) {
+    document.documentElement.style.removeProperty("--hero-image");
+    return;
+  }
+  const safeUrl = imageUrl.replace(/"/g, '\\"');
+  document.documentElement.style.setProperty("--hero-image", `url("${safeUrl}")`);
+}
+
 async function fetchLocalizedData(lang, fileName) {
   try {
     return await fetchJson(`content/${fileName}.${lang}.json`);
@@ -214,6 +352,9 @@ async function renderWebsite(lang) {
   setText("hero-subtitle", site.heroSubtitle);
   setText("story-text", site.story);
   setText("footer-note", site.footerNote);
+  setHeroBackground(site.heroImageUrl);
+  renderGallery(site.photos);
+  renderVideo(site.videoUrl);
   renderSchedule(schedule.events);
   renderTravel(travel.details);
   renderFaq(faq.items);

@@ -9,6 +9,12 @@ This is a static wedding website scaffold with Decap CMS for editing content.
 - `content/*.en.json`, `content/*.pl.json`, `content/*.el.json`: language-specific content
 - `admin/index.html`, `admin/config.yml`: Decap CMS admin panel
 
+`content/site*.json` also supports media fields:
+
+- `heroImageUrl`: hero background image
+- `photos`: gallery image URL list
+- `videoUrl`: YouTube/Vimeo/direct video URL
+
 ## Languages
 
 The site supports three languages:
