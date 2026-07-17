@@ -15,14 +15,11 @@
   <body>
     <div class="page-shell">
       <header class="hero">
+        <div id="hero-media" class="hero-media" aria-hidden="true"></div>
         <div class="hero-overlay">
-          <div class="flourish flourish-left" aria-hidden="true">✦</div>
-          <div class="flourish flourish-right" aria-hidden="true">✦</div>
           <nav class="top-nav">
             <a href="#our-story" data-i18n="navStory">Our Story</a>
             <a href="#schedule" data-i18n="navSchedule">Schedule</a>
-            <a href="#gallery" data-i18n="navGallery">Gallery</a>
-            <a href="#video" data-i18n="navVideo">Video</a>
             <a href="#travel" data-i18n="navTravel">Travel</a>
             <a href="#faq">Q&A</a>
           </nav>
@@ -44,23 +41,15 @@
           <p id="story-text"></p>
         </section>
 
-        <section id="gallery" class="section card animate-up">
-          <p class="section-label" data-i18n="galleryLabel">Photos</p>
-          <h2 data-i18n="galleryTitle">Gallery</h2>
-          <div id="gallery-grid" class="gallery-grid"></div>
-        </section>
-
-        <section id="video" class="section card animate-up">
-          <p class="section-label" data-i18n="videoLabel">Video</p>
-          <h2 data-i18n="videoTitle">Our Video</h2>
-          <div id="video-container" class="video-container"></div>
-        </section>
+        <div id="photo-scatter-1" class="photo-scatter animate-up" data-count="2"></div>
 
         <section id="schedule" class="section card animate-up">
           <p class="section-label" data-i18n="scheduleLabel">Schedule</p>
           <h2 data-i18n="scheduleTitle">Wedding Weekend</h2>
           <ul id="schedule-list" class="event-list"></ul>
         </section>
+
+        <div id="photo-scatter-2" class="photo-scatter animate-up" data-count="2"></div>
 
         <div class="split-layout">
           <section id="travel" class="section card animate-up">
@@ -75,6 +64,8 @@
             <div id="faq-list" class="faq-list"></div>
           </section>
         </div>
+
+        <div id="photo-scatter-3" class="photo-scatter animate-up" data-count="1"></div>
       </main>
 
       <footer class="footer">

@@ -8,15 +8,9 @@ const UI_TEXT = {
   en: {
     navStory: "Our Story",
     navSchedule: "Schedule",
-    navGallery: "Gallery",
-    navVideo: "Video",
     navTravel: "Travel",
     storyLabel: "Who are we?",
     storyTitle: "Our Story",
-    galleryLabel: "Photos",
-    galleryTitle: "Gallery",
-    videoLabel: "Video",
-    videoTitle: "Our Video",
     scheduleLabel: "Schedule",
     scheduleTitle: "Wedding Weekend",
     travelLabel: "Travel",
@@ -28,15 +22,9 @@ const UI_TEXT = {
   pl: {
     navStory: "Nasza historia",
     navSchedule: "Plan",
-    navGallery: "Galeria",
-    navVideo: "Wideo",
     navTravel: "Podróż",
     storyLabel: "Kim jesteśmy?",
     storyTitle: "Nasza historia",
-    galleryLabel: "Zdjęcia",
-    galleryTitle: "Galeria",
-    videoLabel: "Wideo",
-    videoTitle: "Nasz film",
     scheduleLabel: "Plan",
     scheduleTitle: "Weekend ślubny",
     travelLabel: "Podróż",
@@ -48,15 +36,9 @@ const UI_TEXT = {
   el: {
     navStory: "Η ιστορία μας",
     navSchedule: "Πρόγραμμα",
-    navGallery: "Φωτογραφίες",
-    navVideo: "Βίντεο",
     navTravel: "Ταξίδι",
     storyLabel: "Ποιοι είμαστε;",
     storyTitle: "Η ιστορία μας",
-    galleryLabel: "Φωτογραφίες",
-    galleryTitle: "Γκαλερί",
-    videoLabel: "Βίντεο",
-    videoTitle: "Το βίντεό μας",
     scheduleLabel: "Πρόγραμμα",
     scheduleTitle: "Πρόγραμμα γάμου",
     travelLabel: "Ταξίδι",
@@ -209,115 +191,121 @@ function renderFaq(faqItems) {
   }
 }
 
-function setSectionVisibility(id, isVisible) {
-  const section = byId(id);
-  if (!section) {
-    throw new Error(`Missing section element: #${id}`);
-  }
-  section.hidden = !isVisible;
-}
-
-function renderGallery(photos) {
-  const grid = byId("gallery-grid");
-  if (!grid) {
-    throw new Error("Missing gallery grid element.");
-  }
-
+function renderDispersedPhotos(photos) {
+  const containers = document.querySelectorAll(".photo-scatter");
   const validPhotos = (Array.isArray(photos) ? photos : []).filter((photo) => typeof photo === "string" && photo.trim());
-  grid.innerHTML = "";
-  setSectionVisibility("gallery", validPhotos.length > 0);
+  const rotations = ["-2deg", "1.8deg", "-1.2deg", "2.2deg", "-1.6deg"];
+  let photoIndex = 0;
 
-  for (const photoUrl of validPhotos) {
-    const item = document.createElement("figure");
-    item.className = "gallery-item";
+  for (const container of containers) {
+    container.innerHTML = "";
+    if (!validPhotos.length) {
+      container.hidden = true;
+      continue;
+    }
 
-    const image = document.createElement("img");
-    image.src = photoUrl;
-    image.alt = "Wedding photo";
-    image.loading = "lazy";
-    image.decoding = "async";
+    container.hidden = false;
+    const parsedCount = Number.parseInt(container.getAttribute("data-count") || "2", 10);
+    const count = Number.isNaN(parsedCount) ? 2 : Math.max(1, parsedCount);
+    for (let i = 0; i < count; i += 1) {
+      const figure = document.createElement("figure");
+      figure.className = "scatter-photo";
+      figure.style.setProperty("--scatter-rotation", rotations[(photoIndex + i) % rotations.length]);
 
-    item.append(image);
-    grid.appendChild(item);
+      const image = document.createElement("img");
+      image.src = validPhotos[photoIndex % validPhotos.length];
+      image.alt = "Wedding photo";
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      figure.appendChild(image);
+      container.appendChild(figure);
+      photoIndex += 1;
+    }
   }
 }
 
-function toEmbedUrl(videoUrl) {
+function getVideoSource(videoUrl) {
   const url = videoUrl.trim();
   const youtubeShort = url.match(/^https?:\/\/(?:www\.)?youtu\.be\/([^?&/]+)/i);
   if (youtubeShort) {
-    return `https://www.youtube-nocookie.com/embed/${youtubeShort[1]}`;
+    return { provider: "youtube", id: youtubeShort[1] };
   }
 
   const youtubeWatch = url.match(/^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([^?&/]+)/i);
   if (youtubeWatch) {
-    return `https://www.youtube-nocookie.com/embed/${youtubeWatch[1]}`;
+    return { provider: "youtube", id: youtubeWatch[1] };
   }
 
   const youtubeEmbed = url.match(/^https?:\/\/(?:www\.)?youtube(?:-nocookie)?\.com\/embed\/([^?&/]+)/i);
   if (youtubeEmbed) {
-    return `https://www.youtube-nocookie.com/embed/${youtubeEmbed[1]}`;
+    return { provider: "youtube", id: youtubeEmbed[1] };
   }
 
   const vimeoPlayer = url.match(/^https?:\/\/player\.vimeo\.com\/video\/([0-9]+)/i);
   if (vimeoPlayer) {
-    return `https://player.vimeo.com/video/${vimeoPlayer[1]}`;
+    return { provider: "vimeo", id: vimeoPlayer[1] };
   }
 
   const vimeo = url.match(/^https?:\/\/(?:www\.)?vimeo\.com\/([0-9]+)/i);
   if (vimeo) {
-    return `https://player.vimeo.com/video/${vimeo[1]}`;
+    return { provider: "vimeo", id: vimeo[1] };
   }
 
   return null;
 }
 
-function renderVideo(videoUrl) {
-  const container = byId("video-container");
+function toBackgroundEmbedUrl(videoUrl) {
+  const source = getVideoSource(videoUrl);
+  if (!source) {
+    return null;
+  }
+  if (source.provider === "youtube") {
+    return `https://www.youtube-nocookie.com/embed/${source.id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${source.id}&modestbranding=1&rel=0&playsinline=1`;
+  }
+  if (source.provider === "vimeo") {
+    return `https://player.vimeo.com/video/${source.id}?background=1&autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0`;
+  }
+  throw new Error("Unsupported video provider.");
+}
+
+function renderHeroMedia(videoUrl) {
+  const container = byId("hero-media");
   if (!container) {
-    throw new Error("Missing video container element.");
+    throw new Error("Missing hero media container.");
   }
 
   const value = typeof videoUrl === "string" ? videoUrl.trim() : "";
   container.innerHTML = "";
   if (!value) {
-    setSectionVisibility("video", false);
     return;
   }
 
-  setSectionVisibility("video", true);
   const isDirectVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(value);
   if (isDirectVideo) {
     const video = document.createElement("video");
-    video.className = "embedded-video";
-    video.controls = true;
-    video.preload = "metadata";
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = "auto";
     video.src = value;
     container.appendChild(video);
     return;
   }
 
-  const embedUrl = toEmbedUrl(value);
-  if (embedUrl) {
-    const iframe = document.createElement("iframe");
-    iframe.className = "embedded-video";
-    iframe.src = embedUrl;
-    iframe.title = "Wedding video";
-    iframe.loading = "lazy";
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-    iframe.referrerPolicy = "strict-origin-when-cross-origin";
-    iframe.allowFullscreen = true;
-    container.appendChild(iframe);
+  const embedUrl = toBackgroundEmbedUrl(value);
+  if (!embedUrl) {
     return;
   }
 
-  const link = document.createElement("a");
-  link.href = value;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.className = "button";
-  link.textContent = "Open video";
-  container.appendChild(link);
+  const iframe = document.createElement("iframe");
+  iframe.src = embedUrl;
+  iframe.title = "Header background video";
+  iframe.loading = "eager";
+  iframe.allow = "autoplay; fullscreen; picture-in-picture";
+  iframe.referrerPolicy = "strict-origin-when-cross-origin";
+  container.appendChild(iframe);
 }
 
 function setHeroBackground(imageUrl) {
@@ -353,8 +341,8 @@ async function renderWebsite(lang) {
   setText("story-text", site.story);
   setText("footer-note", site.footerNote);
   setHeroBackground(site.heroImageUrl);
-  renderGallery(site.photos);
-  renderVideo(site.videoUrl);
+  renderHeroMedia(site.heroVideoUrl || site.videoUrl);
+  renderDispersedPhotos(site.photos);
   renderSchedule(schedule.events);
   renderTravel(travel.details);
   renderFaq(faq.items);
