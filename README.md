@@ -14,6 +14,9 @@ This is a static wedding website scaffold with Decap CMS for editing content.
 - `heroImageUrl`: hero background image path (local uploads go to `assets/uploads`)
 - `photos`: gallery image path list (local uploads go to `assets/uploads`)
 - `videoUrl`: YouTube/Vimeo/direct video URL
+- `weddingDate`: display date text shown in the wedding details section
+- `weddingDateIso`: ISO date-time value used to calculate the day countdown
+- `weddingLocation`: location text shown in the wedding details section
 
 Media paths work with GitHub Pages project URLs (for example `https://<user>.github.io/<repo>/`) and can be stored as either:
 

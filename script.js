@@ -7,6 +7,14 @@ const SITE_BASE_URL = new URL(".", window.location.href);
 
 const UI_TEXT = {
   en: {
+    dateLabel: "Wedding date",
+    locationLabel: "Location",
+    countdownLabel: "Day countdown",
+    countdownToday: "Today!",
+    countdownDaysLeftSingular: "day",
+    countdownDaysLeftPlural: "days",
+    countdownDaysAgoSingular: "day",
+    countdownDaysAgoPlural: "days",
     storyLabel: "Who are we?",
     storyTitle: "Our Story",
     scheduleLabel: "Schedule",
@@ -18,6 +26,14 @@ const UI_TEXT = {
     errorBody: "Please check your content files in /content and try again."
   },
   pl: {
+    dateLabel: "Data ślubu",
+    locationLabel: "Miejsce",
+    countdownLabel: "Odliczanie",
+    countdownToday: "Dzisiaj!",
+    countdownDaysLeftSingular: "dzień",
+    countdownDaysLeftPlural: "dni",
+    countdownDaysAgoSingular: "dzień",
+    countdownDaysAgoPlural: "dni",
     storyLabel: "Kim jesteśmy?",
     storyTitle: "Nasza historia",
     scheduleLabel: "Plan",
@@ -29,6 +45,14 @@ const UI_TEXT = {
     errorBody: "Sprawdź pliki w /content i spróbuj ponownie."
   },
   el: {
+    dateLabel: "Ημερομηνία γάμου",
+    locationLabel: "Τοποθεσία",
+    countdownLabel: "Αντίστροφη μέτρηση",
+    countdownToday: "Σήμερα!",
+    countdownDaysLeftSingular: "μέρα",
+    countdownDaysLeftPlural: "μέρες",
+    countdownDaysAgoSingular: "μέρα",
+    countdownDaysAgoPlural: "μέρες",
     storyLabel: "Ποιοι είμαστε;",
     storyTitle: "Η ιστορία μας",
     scheduleLabel: "Πρόγραμμα",
@@ -200,6 +224,55 @@ function renderFaq(faqItems) {
   }
 }
 
+function parseWeddingDate(site) {
+  const fromIso = typeof site.weddingDateIso === "string" ? site.weddingDateIso.trim() : "";
+  if (fromIso) {
+    const parsed = new Date(fromIso);
+    if (!Number.isNaN(parsed.getTime())) {
+      return parsed;
+    }
+    console.error(`Invalid weddingDateIso value: "${site.weddingDateIso}"`);
+  }
+
+  const fromDisplayDate = typeof site.weddingDate === "string" ? site.weddingDate.trim() : "";
+  if (fromDisplayDate) {
+    const parsed = new Date(fromDisplayDate);
+    if (!Number.isNaN(parsed.getTime())) {
+      return parsed;
+    }
+    console.error(`Invalid weddingDate value: "${site.weddingDate}"`);
+  }
+
+  return null;
+}
+
+function formatCountdownText(dayDifference, lang) {
+  const dictionary = UI_TEXT[lang] || UI_TEXT[DEFAULT_LANG];
+  if (dayDifference === 0) {
+    return dictionary.countdownToday;
+  }
+  const absolute = Math.abs(dayDifference);
+  const unit = absolute === 1 ? dictionary.countdownDaysLeftSingular : dictionary.countdownDaysLeftPlural;
+  return `${absolute} ${unit}`;
+}
+
+function renderWeddingDetails(site, lang) {
+  setText("wedding-date", site.weddingDate || "—");
+  setText("wedding-location", site.weddingLocation || "—");
+
+  const weddingDate = parseWeddingDate(site);
+  if (!weddingDate) {
+    setText("day-countdown", "—");
+    return;
+  }
+
+  const now = new Date();
+  const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const weddingUtc = Date.UTC(weddingDate.getUTCFullYear(), weddingDate.getUTCMonth(), weddingDate.getUTCDate());
+  const dayDifference = Math.round((weddingUtc - todayUtc) / 86400000);
+  setText("day-countdown", formatCountdownText(dayDifference, lang));
+}
+
 function renderDispersedPhotos(photos) {
   const containers = document.querySelectorAll(".photo-scatter");
   const validPhotos = (Array.isArray(photos) ? photos : [])
@@ -347,9 +420,9 @@ async function renderWebsite(lang) {
 
   applyUiText(lang);
   setActiveLanguageButton(lang);
-  setText("hero-date", site.weddingDate);
   setText("hero-title", site.heroTitle);
   setText("hero-subtitle", site.heroSubtitle);
+  renderWeddingDetails(site, lang);
   setText("story-text", site.story);
   setText("footer-note", site.footerNote);
   setHeroBackground(site.heroImageUrl);
