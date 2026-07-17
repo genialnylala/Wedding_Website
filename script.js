@@ -7,9 +7,6 @@ const SITE_BASE_URL = new URL(".", window.location.href);
 
 const UI_TEXT = {
   en: {
-    navStory: "Our Story",
-    navSchedule: "Schedule",
-    navTravel: "Travel",
     storyLabel: "Who are we?",
     storyTitle: "Our Story",
     scheduleLabel: "Schedule",
@@ -21,9 +18,6 @@ const UI_TEXT = {
     errorBody: "Please check your content files in /content and try again."
   },
   pl: {
-    navStory: "Nasza historia",
-    navSchedule: "Plan",
-    navTravel: "Podróż",
     storyLabel: "Kim jesteśmy?",
     storyTitle: "Nasza historia",
     scheduleLabel: "Plan",
@@ -35,9 +29,6 @@ const UI_TEXT = {
     errorBody: "Sprawdź pliki w /content i spróbuj ponownie."
   },
   el: {
-    navStory: "Η ιστορία μας",
-    navSchedule: "Πρόγραμμα",
-    navTravel: "Ταξίδι",
     storyLabel: "Ποιοι είμαστε;",
     storyTitle: "Η ιστορία μας",
     scheduleLabel: "Πρόγραμμα",
