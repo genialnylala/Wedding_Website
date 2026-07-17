@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "question": "Do kiedy trzeba potwierdzić obecność?",
+      "answer": "Prosimy o RSVP do 15 kwietnia, żebyśmy mogli dokładnie oszacować liczbę gości."
+    },
+    {
+      "question": "Czy mogę przyjść z osobą towarzyszącą?",
+      "answer": "Sprawdź proszę zaproszenie — jeśli masz plus one, będzie to tam zaznaczone."
+    },
+    {
+      "question": "Czy dzieci są zaproszone?",
+      "answer": "Uwielbiamy dzieci, ale ceremonia i przyjęcie będą bez dzieci. Dzieci są mile widziane na piątkowym koktajlu i niedzielnym brunchu."
+    },
+    {
+      "question": "Jaka będzie pogoda?",
+      "answer": "Spodziewajcie się ciepłej i słonecznej pogody — zwykle 28–34°C w dzień."
+    },
+    {
+      "question": "Gdzie można zaparkować?",
+      "answer": "W pobliżu wejścia na teren obiektu dostępny jest bezpłatny parking."
+    }
+  ]
+}

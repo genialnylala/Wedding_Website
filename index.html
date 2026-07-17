@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eva & Franek Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-overlay">
+          <div class="flourish flourish-left" aria-hidden="true">✦</div>
+          <div class="flourish flourish-right" aria-hidden="true">✦</div>
+          <nav class="top-nav">
+            <a href="#our-story" data-i18n="navStory">Our Story</a>
+            <a href="#schedule" data-i18n="navSchedule">Schedule</a>
+            <a href="#travel" data-i18n="navTravel">Travel</a>
+            <a href="#faq">Q&A</a>
+          </nav>
+          <div class="language-switcher" aria-label="Language switcher">
+            <button class="lang-btn" data-lang="en" type="button">EN</button>
+            <button class="lang-btn" data-lang="pl" type="button">PL</button>
+            <button class="lang-btn" data-lang="el" type="button">EL</button>
+          </div>
+          <p id="hero-date" class="eyebrow"></p>
+          <h1 id="hero-title"></h1>
+          <p id="hero-subtitle" class="subtitle"></p>
+        </div>
+      </header>
+
+      <main>
+        <section id="our-story" class="section card story-card animate-up">
+          <p class="section-label" data-i18n="storyLabel">Who are we?</p>
+          <h2 data-i18n="storyTitle">Our Story</h2>
+          <p id="story-text"></p>
+        </section>
+
+        <section id="schedule" class="section card animate-up">
+          <p class="section-label" data-i18n="scheduleLabel">Schedule</p>
+          <h2 data-i18n="scheduleTitle">Wedding Weekend</h2>
+          <ul id="schedule-list" class="event-list"></ul>
+        </section>
+
+        <div class="split-layout">
+          <section id="travel" class="section card animate-up">
+            <p class="section-label" data-i18n="travelLabel">Travel</p>
+            <h2 data-i18n="travelTitle">Travel & Stay</h2>
+            <ul id="travel-list" class="details-list"></ul>
+          </section>
+
+          <section id="faq" class="section card animate-up">
+            <p class="section-label">Q&A</p>
+            <h2 data-i18n="faqTitle">Guest Questions</h2>
+            <div id="faq-list" class="faq-list"></div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p id="footer-note"></p>
+      </footer>
+    </div>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

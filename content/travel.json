@@ -1,0 +1,20 @@
+{
+  "details": [
+    {
+      "label": "Wedding Location",
+      "value": "Patmos, Greece."
+    },
+    {
+      "label": "Weather",
+      "value": "Welcome to Rome! You can expect warm, sunny weather—usually around 28–34°C in the day—with lovely evenings. Light clothes and plenty of water are definitely recommended."
+    },
+    {
+      "label": "Parking",
+      "value": "There’s plenty of free parking close to the entrance of the venue."
+    },
+    {
+      "label": "Accessibility",
+      "value": "Yes! We’ll have a buggy available for anyone who needs a hand getting around the grounds."
+    }
+  ]
+}

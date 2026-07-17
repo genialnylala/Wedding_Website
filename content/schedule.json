@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "title": "Friday cocktail reception",
+      "date": "Friday, June 4, 2027",
+      "time": "TBD",
+      "location": "Patmos, Greece"
+    },
+    {
+      "title": "Ceremony",
+      "date": "Saturday, June 5, 2027",
+      "time": "4:00 PM",
+      "location": "Patmos, Greece"
+    },
+    {
+      "title": "Sunday brunch",
+      "date": "Sunday, June 6, 2027",
+      "time": "TBD",
+      "location": "Patmos, Greece"
+    }
+  ]
+}

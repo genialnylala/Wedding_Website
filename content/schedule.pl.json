@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "title": "Piątkowy koktajl",
+      "date": "Piątek, 4 czerwca 2027",
+      "time": "Do potwierdzenia",
+      "location": "Patmos, Grecja"
+    },
+    {
+      "title": "Ceremonia",
+      "date": "Sobota, 5 czerwca 2027",
+      "time": "16:00",
+      "location": "Patmos, Grecja"
+    },
+    {
+      "title": "Niedzielny brunch",
+      "date": "Niedziela, 6 czerwca 2027",
+      "time": "Do potwierdzenia",
+      "location": "Patmos, Grecja"
+    }
+  ]
+}

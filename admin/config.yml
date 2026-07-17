@@ -1,0 +1,71 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - name: "site-settings"
+        label: "Site Settings"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - { label: "Hero title", name: "heroTitle", widget: "string" }
+          - { label: "Hero subtitle", name: "heroSubtitle", widget: "text" }
+          - { label: "Wedding date", name: "weddingDate", widget: "string" }
+          - { label: "Story", name: "story", widget: "text" }
+          - { label: "RSVP URL", name: "rsvpUrl", widget: "string" }
+          - { label: "Footer note", name: "footerNote", widget: "string" }
+
+  - name: "schedule"
+    label: "Schedule"
+    files:
+      - name: "schedule-items"
+        label: "Schedule Items"
+        file: "content/schedule.json"
+        format: "json"
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+
+  - name: "travel"
+    label: "Travel"
+    files:
+      - name: "travel-details"
+        label: "Travel Details"
+        file: "content/travel.json"
+        format: "json"
+        fields:
+          - label: "Details"
+            name: "details"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Value", name: "value", widget: "text" }
+
+  - name: "faq"
+    label: "FAQ"
+    files:
+      - name: "faq-items"
+        label: "FAQ Items"
+        file: "content/faq.json"
+        format: "json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
