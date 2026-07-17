@@ -58,8 +58,12 @@ body {
   display: block;
 }
 
+.hero-media video {
+  object-position: center 35%;
+}
+
 .hero-media iframe {
-  transform: scale(1.22);
+  transform: scale(1.22) translateY(4%);
   transform-origin: center center;
 }
 
