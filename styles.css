@@ -100,6 +100,11 @@ body {
 
 .language-switcher {
   display: inline-flex;
+  position: fixed;
+  top: max(0.75rem, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
   gap: 0.3rem;
   padding: 0.26rem;
   margin-bottom: 0;
