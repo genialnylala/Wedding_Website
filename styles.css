@@ -267,6 +267,11 @@ main {
   transform-origin: center;
 }
 
+.page-shell.hide-below-counter-photo main #counter-photo ~ *,
+.page-shell.hide-below-counter-photo .footer {
+  display: none;
+}
+
 .card {
   background: var(--card);
   border: 1px solid var(--line);
