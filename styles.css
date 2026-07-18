@@ -197,6 +197,24 @@ main {
   overflow: visible;
 }
 
+.between-hero-gallery3-bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.15rem;
+  min-height: clamp(520px, 130vw, 1380px);
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+  border-radius: 1.4rem;
+  background:
+    linear-gradient(rgba(255, 252, 247, 0.6), rgba(255, 252, 247, 0.6)),
+    url("assets/uploads/between-hero-gallery3-bg.png") center top / contain no-repeat;
+}
+
+#photo-scatter-3 {
+  margin-top: clamp(1.2rem, 2.8vw, 2.2rem);
+}
+
 .hero-details {
   text-align: center;
 }
@@ -516,6 +534,11 @@ h2 {
 
   main {
     margin-top: 3.2rem;
+  }
+
+  .between-hero-gallery3-bg {
+    min-height: clamp(420px, 132vw, 860px);
+    padding: 0.7rem;
   }
 
   .photo-scatter {
