@@ -267,7 +267,16 @@ main {
   transform-origin: center;
 }
 
-.page-shell.hide-below-counter-photo main #counter-photo ~ *,
+.counter-photo-note {
+  margin: 0;
+  padding: 0.9rem 1rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  background: transparent;
+}
+
+.page-shell.hide-below-counter-photo main #counter-photo-note ~ *,
 .page-shell.hide-below-counter-photo .footer {
   display: none;
 }

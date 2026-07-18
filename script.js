@@ -22,6 +22,7 @@ const UI_TEXT = {
     travelLabel: "Travel",
     travelTitle: "Travel & Stay",
     faqTitle: "Guest Questions",
+    moreInfoComing: "More info to come",
     errorTitle: "Content failed to load",
     errorBody: "Please check your content files in /content and try again."
   },
@@ -41,6 +42,7 @@ const UI_TEXT = {
     travelLabel: "Podróż",
     travelTitle: "Dojazd i nocleg",
     faqTitle: "Pytania gości",
+    moreInfoComing: "Więcej informacji wkrótce",
     errorTitle: "Nie udało się wczytać treści",
     errorBody: "Sprawdź pliki w /content i spróbuj ponownie."
   },
@@ -60,6 +62,7 @@ const UI_TEXT = {
     travelLabel: "Ταξίδι",
     travelTitle: "Μετακίνηση και διαμονή",
     faqTitle: "Ερωτήσεις καλεσμένων",
+    moreInfoComing: "Περισσότερες πληροφορίες σύντομα",
     errorTitle: "Δεν ήταν δυνατή η φόρτωση περιεχομένου",
     errorBody: "Ελέγξτε τα αρχεία στο /content και δοκιμάστε ξανά."
   }
@@ -280,7 +283,8 @@ function isCounterPhoto(photoUrl) {
 function renderCounterPhoto(photos) {
   const container = byId("counter-photo");
   const image = byId("counter-photo-image");
-  if (!container || !image) {
+  const note = byId("counter-photo-note");
+  if (!container || !image || !note) {
     throw new Error("Missing counter photo elements.");
   }
 
@@ -290,12 +294,14 @@ function renderCounterPhoto(photos) {
   const counterPhoto = validPhotos.find((photo) => isCounterPhoto(photo)) || "";
   if (!counterPhoto) {
     container.hidden = true;
+    note.hidden = true;
     image.removeAttribute("src");
     return;
   }
 
   image.src = counterPhoto;
   container.hidden = false;
+  note.hidden = false;
 }
 
 function renderDispersedPhotos(photos) {
