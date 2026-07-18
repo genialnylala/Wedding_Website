@@ -273,11 +273,36 @@ function renderWeddingDetails(site, lang) {
   setText("day-countdown", formatCountdownText(dayDifference, lang));
 }
 
+function isCounterPhoto(photoUrl) {
+  return /gallery-3\.png(?:[?#].*)?$/i.test(photoUrl);
+}
+
+function renderCounterPhoto(photos) {
+  const container = byId("counter-photo");
+  const image = byId("counter-photo-image");
+  if (!container || !image) {
+    throw new Error("Missing counter photo elements.");
+  }
+
+  const validPhotos = (Array.isArray(photos) ? photos : [])
+    .map((photo) => resolveAssetUrl(photo))
+    .filter(Boolean);
+  const counterPhoto = validPhotos.find((photo) => isCounterPhoto(photo)) || "";
+  if (!counterPhoto) {
+    container.hidden = true;
+    image.removeAttribute("src");
+    return;
+  }
+
+  image.src = counterPhoto;
+  container.hidden = false;
+}
+
 function renderDispersedPhotos(photos) {
   const containers = document.querySelectorAll(".photo-scatter");
   const validPhotos = (Array.isArray(photos) ? photos : [])
     .map((photo) => resolveAssetUrl(photo))
-    .filter(Boolean);
+    .filter((photo) => photo && !isCounterPhoto(photo));
   const rotations = ["-2deg", "1.8deg", "-1.2deg", "2.2deg", "-1.6deg"];
   let photoIndex = 0;
 
@@ -427,6 +452,7 @@ async function renderWebsite(lang) {
   setText("footer-note", site.footerNote);
   setHeroBackground(site.heroImageUrl);
   renderHeroMedia(site.heroVideoUrl || site.videoUrl);
+  renderCounterPhoto(site.photos);
   renderDispersedPhotos(site.photos);
   renderSchedule(schedule.events);
   renderTravel(travel.details);
