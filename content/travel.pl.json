@@ -1,20 +1,168 @@
 {
-  "details": [
+  "sections": [
     {
-      "label": "Lokalizacja ślubu",
-      "value": "Patmos, Grecja."
+      "heading": "Jak dotrzeć na Patmos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "I tu zaczyna się zabawa! Przygoda zaczyna się jeszcze przed ślubem!\n\nPonieważ Patmos nie ma lotniska, najpierw trzeba dolecieć na **Kos (KGS)**, **Rodos (RHO)** lub **Ateny (ATH)**, a następnie kontynuować podróż promem. Patmos jest połączony promem ze wszystkimi trzema kierunkami."
+        },
+        {
+          "type": "heading3",
+          "text": "Lot na Kos lub Rodos"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dla wielu naszych gości Kos lub Rodos będą najwygodniejszą opcją.\n\nRyanair i inne linie lotnicze zazwyczaj publikują letnie rozkłady lotów od stycznia. W zależności od miejsca wylotu bilety w obie strony można znaleźć już od około 100 €.\n\nPo przylocie busy i taksówki łączą lotniska z portami promowymi. Postaramy się zamieścić tutaj link do rozkładu promów. Na Rodos Mapy Google działają doskonale."
+        },
+        {
+          "type": "heading3",
+          "text": "Lot do Aten"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ateny to często jedna z najtańszych opcji.\n\nJeśli lecisz przez Ateny, pamiętaj o zostawieniu sobie odpowiedniej ilości czasu na dojazd z lotniska do Portu Pireus:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Około 1 godziny taksówką",
+            "Około 1,5 godziny komunikacją miejską"
+          ]
+        },
+        {
+          "type": "heading3",
+          "text": "Prom na Patmos"
+        },
+        {
+          "type": "paragraph",
+          "text": "Po wylądowaniu trzeba złapać prom na Patmos.\n\nGorąco zalecamy zostawienie co najmniej **1–2 godzin między przylądowaniem a odjazdem promu**. Podróż po wyspach jest zazwyczaj spokojna, ale promy nie czekają, gdy lot ma opóźnienie!"
+        },
+        {
+          "type": "heading3",
+          "text": "Przybliżony czas rejsu promem"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Z Kos:** 2–4 godziny",
+            "**Z Rodos:** 4–7 godzin (zależnie od wybranego promu i dnia)",
+            "**Z Aten (Pireus):** 7–9 godzin"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Bardziej szczegółowe informacje o promach i polecane połączenia opublikujemy po ukazaniu się rozkładów letnich."
+        },
+        {
+          "type": "callout",
+          "title": "🇬🇷 Mała grecka wysepkowa wskazówka",
+          "text": "Dotarcie na Patmos wymaga trochę wysiłku — i właśnie to czyni to miejsce wyjątkowym.\n\nNie planuj napiętych przesiadek. Weź kawę na porcie (freddooooo espressooo poproszę!), rozkoszuj się rejsem promem, patrz na morze i przestaw się na wyspiarskie tempo. Tu jest wolniej — i właśnie za to to kochamy.\n\nCzerwiec to jeden z naszych ulubionych miesięcy na Patmos: ciepła pogoda, piękne warunki do kąpieli i znacznie spokojniejsza atmosfera niż w szczycie sezonu letniego."
+        }
+      ]
     },
     {
-      "label": "Pogoda",
-      "value": "Możecie spodziewać się ciepłej i słonecznej pogody — zwykle około 28–34°C w ciągu dnia oraz przyjemnych wieczorów."
+      "heading": "Zakwaterowanie",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Aktualnie negocjujemy specjalne stawki z wybranymi hotelami i apartamentami w Skala, gdzie odbędzie się przyjęcie. Zaktualizujemy tę sekcję, gdy tylko wszystko zostanie potwierdzone."
+        }
+      ]
     },
     {
-      "label": "Parking",
-      "value": "W pobliżu wejścia na teren obiektu dostępny jest bezpłatny parking."
+      "heading": "Jak poruszać się po wyspie",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gorąco polecamy wynajęcie:"
+        },
+        {
+          "type": "list",
+          "items": ["Samochodu", "Skutera", "Quada (ATV)"]
+        },
+        {
+          "type": "paragraph",
+          "text": "Patmos jest małą wyspą, ale posiadanie własnego środka transportu ułatwia odkrywanie pięknych plaż, punktów widokowych i ukrytych zakątków.\n\nDostępny jest również autobus z kilkoma trasami!\n\nTaksówki są nieliczne i dość drogie, zwłaszcza latem — własne kółka mogą być bardzo przydatne."
+        }
+      ]
     },
     {
-      "label": "Dostępność",
-      "value": "Tak, miejsce ceremonii i przyjęcia jest dostępne. Dla osób potrzebujących wsparcia będzie dostępny buggy."
+      "heading": "Nasze ulubione restauracje",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Oto kilka naszych osobistych faworytów:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Pernera — restauracja wegańska",
+            "Pantelis",
+            "To Trehantiri",
+            "Ta Kavourakia",
+            "Medusa",
+            "Floisvos w Groikos",
+            "Diogenis — pizza w Groikos",
+            "Atmos"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "(Linki do Google Maps pojawią się wkrótce)"
+        }
+      ]
+    },
+    {
+      "heading": "Co robić na Patmos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Patmos słynie ze spokojnej atmosfery, pięknych plaż i wyjątkowej historii."
+        },
+        {
+          "type": "heading3",
+          "text": "Miejsca, które warto zobaczyć"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Klasztor Świętego Jana Teologa (Światowe Dziedzictwo UNESCO)",
+            "Grota Apokalipsy",
+            "Spacer malowniczymi uliczkami Chory (historia piratów)",
+            "Odkrywanie portu Skala"
+          ]
+        },
+        {
+          "type": "heading3",
+          "text": "Plaże i przyroda"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Psili Ammos — dzień tu jest zawsze magiczny! Wyrusz wcześnie: 15 min jazdy, potem 30 min spaceru przez górę. Łatwa trasa z pięknymi widokami.",
+            "Plaża Vagia",
+            "Plaża Livadi Geranou",
+            "Plaża Kampos",
+            "Zachód słońca z Profitis Ilias",
+            "Wędrówka na Starożytną Akropol — na wschód lub zachód słońca",
+            "Zachód słońca z Chory"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "🚌 Transport podczas weekendu ślubnego",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Aby wszystko przebiegło wygodnie, zorganizujemy transport na część weekendu ślubnego."
+        },
+        {
+          "type": "callout",
+          "text": "**Jeśli chcesz zarezerwować miejsce w autobusie w piątek i/lub sobotę, napisz do nas na WhatsApp.**\n\nSzczegóły dotyczące miejsc i godzin odjazdu podamy bliżej wesela."
+        }
+      ]
     }
   ]
 }

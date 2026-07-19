@@ -1,22 +1,91 @@
 {
-  "events": [
+  "celebration": {
+    "heading": "Nasze świętowanie",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Po ceremonii wrócimy do **Pernery**, restauracji brata Evy w Skala, gdzie będziemy świętować razem przy jedzeniu, muzyce, tańcach i pięknym patmijskim letnim wieczorze."
+      },
+      {
+        "type": "paragraph",
+        "text": "Pernera mieści się w rodzinnej posiadłości w domu zbudowanym przez dziadka Evy, **Manolisa**. To też miejsce, w którym mama Evy, **Anastazja**, dorastała, spędzając długie lata z rodziną i przyjaciółmi. Eva również spędziła tu wszystkie swoje wakacje."
+      },
+      {
+        "type": "paragraph",
+        "text": "Ten mały zakątek Skali jest częścią rodzinnej historii od pokoleń — i właśnie dlatego tak wiele dla nas znaczy, że możemy tu świętować nasz ślub."
+      },
+      {
+        "type": "callout",
+        "text": "Nie spodziewajcie się wielkiej sali balowej, wyszukanych dekoracji ani luksusowej sali weselnej.\n\nSpodziewajcie się relaksującej greckiej wyspiarskiej uroczystości, pysznego jedzenia, dobrego towarzystwa, mnóstwa tańców i letniego wieczoru pod gwiazdami.\n\nCieszymy się niezmiernie, że możemy podzielić się z wami tym wyjątkowym miejscem — i małą częścią naszej rodzinnej historii."
+      }
+    ]
+  },
+  "days": [
     {
-      "title": "Piątkowy koktajl",
+      "title": "Piątek – Dzień na plaży i sportu 🏃‍♀️🏖",
       "date": "Piątek, 4 czerwca 2027",
-      "time": "Do potwierdzenia",
-      "location": "Patmos, Grecja"
+      "slots": [
+        {
+          "time": "09:30",
+          "title": "Bieg 5K ze Skali do Kampos",
+          "notes": [
+            "Więcej szczegółów wkrótce.",
+            "Dla wszystkich, którzy wolą spokojniejszy start dnia, autobus odjedzie ze Skali o **10:00** w kierunku plaży Kampos."
+          ]
+        },
+        {
+          "time": "10:00+",
+          "title": "Dzień na plaży Kampos",
+          "notes": [
+            "Spędzimy dzień na pływaniu, relaksie, zabawie na plaży i wspólnym jedzeniu w Kavourakia."
+          ]
+        }
+      ],
+      "checklist": ["Strój kąpielowy", "Ręcznik", "Krem z filtrem", "Kapelusz", "Dobry humor"]
     },
     {
-      "title": "Ceremonia",
+      "title": "Sobota – Wielki Dzień ❤️",
       "date": "Sobota, 5 czerwca 2027",
-      "time": "16:00",
-      "location": "Patmos, Grecja"
+      "slots": [
+        {
+          "time": "15:30",
+          "title": "Odjazd autobusu ze Skali",
+          "notes": ["Jeśli chcesz zarezerwować miejsce, napisz do nas na WhatsApp."]
+        },
+        {
+          "time": "16:00",
+          "title": "Ceremonia ślubna"
+        },
+        {
+          "time": "17:15",
+          "title": "Zdjęcia i przysięgi przy kościele"
+        },
+        {
+          "time": "17:45",
+          "title": "Świętowanie w Pernera",
+          "notes": ["Wracamy do Pernery, gdzie zaczyna się jedzenie, picie, muzyka i tańce."]
+        }
+      ]
     },
     {
-      "title": "Niedzielny brunch",
+      "title": "Niedziela – Opcjonalna przygoda na łodzi ⛵",
       "date": "Niedziela, 6 czerwca 2027",
-      "time": "Do potwierdzenia",
-      "location": "Patmos, Grecja"
+      "slots": [
+        {
+          "time": "10:00–18:00",
+          "title": "Rejs wokół wyspy",
+          "notes": [
+            "Jeśli pogoda nam dopisze (i wiatr postanowi współpracować!), planujemy rejs łódką dookoła wyspy.",
+            "Zorganizujemy grupowy rabat i podzielimy się ostateczną ceną, gdy będziemy wiedzieć, ile osób chce się przyłączyć.",
+            "Jeśli jesteś zainteresowany/a, daj nam znać przez WhatsApp przy RSVP.",
+            "To idealny sposób na odkrycie ukrytych plaż, spędzenie jeszcze jednego dnia razem i regenerację po sobotnich tańcach — lub kontynuowanie świętowania. 🌊☀️🍷"
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "finalNote": {
+    "heading": "Końcowa refleksja ❤️",
+    "text": "Wiemy, że dotarcie na Patmos wymaga nieco więcej wysiłku niż lot bezpośrednio do wielkiego miasta czy kurortu.\n\nDziękujemy, że podejmujecie tę podróż.\n\nJesteśmy niezmiernie wdzięczni, że pokoniecie tę drogę, żeby świętować z nami — i nie możemy się doczekać, kiedy podzielimy się z wami naszą ulubioną wyspą, naszymi ulubionymi miejscami i niezapomnianym weekendem. 🇬🇷✨🌊🥂"
+  }
 }
