@@ -22,7 +22,6 @@ const UI_TEXT = {
     travelLabel: "Travel",
     travelTitle: "Travel & Stay",
     faqTitle: "Guest Questions",
-    moreInfoComing: "More info to come",
     errorTitle: "Content failed to load",
     errorBody: "Please check your content files in /content and try again."
   },
@@ -42,7 +41,6 @@ const UI_TEXT = {
     travelLabel: "Podróż",
     travelTitle: "Dojazd i nocleg",
     faqTitle: "Pytania gości",
-    moreInfoComing: "Więcej informacji wkrótce",
     errorTitle: "Nie udało się wczytać treści",
     errorBody: "Sprawdź pliki w /content i spróbuj ponownie."
   },
@@ -62,7 +60,6 @@ const UI_TEXT = {
     travelLabel: "Ταξίδι",
     travelTitle: "Μετακίνηση και διαμονή",
     faqTitle: "Ερωτήσεις καλεσμένων",
-    moreInfoComing: "Περισσότερες πληροφορίες σύντομα",
     errorTitle: "Δεν ήταν δυνατή η φόρτωση περιεχομένου",
     errorBody: "Ελέγξτε τα αρχεία στο /content και δοκιμάστε ξανά."
   }
@@ -293,22 +290,6 @@ function renderSchedule(scheduleData) {
       daysDiv.appendChild(dayDiv);
     }
     container.appendChild(daysDiv);
-
-    if (scheduleData.finalNote) {
-      const noteDiv = document.createElement("div");
-      noteDiv.className = "rich-section rich-final-note";
-      if (scheduleData.finalNote.heading) {
-        const h = document.createElement("h3");
-        h.className = "rich-section-heading";
-        h.textContent = scheduleData.finalNote.heading;
-        noteDiv.appendChild(h);
-      }
-      const p = document.createElement("p");
-      p.className = "rich-paragraph";
-      p.appendChild(renderInline(scheduleData.finalNote.text));
-      noteDiv.appendChild(p);
-      container.appendChild(noteDiv);
-    }
   } else if (scheduleData.events) {
     const list = document.createElement("ul");
     list.className = "event-list";
@@ -350,6 +331,21 @@ function renderTravel(travelData) {
       }
       renderBlocks(sectionDiv, section.blocks || []);
       container.appendChild(sectionDiv);
+    }
+    if (travelData.finalNote) {
+      const noteDiv = document.createElement("div");
+      noteDiv.className = "rich-section rich-final-note";
+      if (travelData.finalNote.heading) {
+        const h = document.createElement("h3");
+        h.className = "rich-section-heading";
+        h.textContent = travelData.finalNote.heading;
+        noteDiv.appendChild(h);
+      }
+      const p = document.createElement("p");
+      p.className = "rich-paragraph";
+      p.appendChild(renderInline(travelData.finalNote.text));
+      noteDiv.appendChild(p);
+      container.appendChild(noteDiv);
     }
   } else if (travelData.details) {
     const list = document.createElement("ul");
@@ -466,7 +462,7 @@ function renderCounterPhoto(photos) {
   const container = byId("counter-photo");
   const image = byId("counter-photo-image");
   const note = byId("counter-photo-note");
-  if (!container || !image || !note) {
+  if (!container || !image) {
     throw new Error("Missing counter photo elements.");
   }
 
@@ -476,14 +472,14 @@ function renderCounterPhoto(photos) {
   const counterPhoto = validPhotos.find((photo) => isCounterPhoto(photo)) || "";
   if (!counterPhoto) {
     container.hidden = true;
-    note.hidden = true;
+    if (note) note.hidden = true;
     image.removeAttribute("src");
     return;
   }
 
   image.src = counterPhoto;
   container.hidden = false;
-  note.hidden = false;
+  if (note) note.hidden = false;
 }
 
 function renderDispersedPhotos(photos) {
@@ -566,7 +562,7 @@ function toBackgroundEmbedUrl(videoUrl) {
   throw new Error("Unsupported video provider.");
 }
 
-function renderHeroMedia(videoUrl) {
+function renderHeroMedia(videoUrl, fallbackImageUrl) {
   const container = byId("hero-media");
   if (!container) {
     throw new Error("Missing hero media container.");
@@ -574,45 +570,42 @@ function renderHeroMedia(videoUrl) {
 
   const value = resolveAssetUrl(videoUrl);
   container.innerHTML = "";
-  if (!value) {
-    return;
+
+  if (value) {
+    const isDirectVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(value);
+    if (isDirectVideo) {
+      const video = document.createElement("video");
+      video.autoplay = true;
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.preload = "auto";
+      video.src = value;
+      container.appendChild(video);
+      return;
+    }
+
+    const embedUrl = toBackgroundEmbedUrl(value);
+    if (embedUrl) {
+      const iframe = document.createElement("iframe");
+      iframe.src = embedUrl;
+      iframe.title = "Header background video";
+      iframe.loading = "eager";
+      iframe.allow = "autoplay; fullscreen; picture-in-picture";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      container.appendChild(iframe);
+      return;
+    }
   }
 
-  const isDirectVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(value);
-  if (isDirectVideo) {
-    const video = document.createElement("video");
-    video.autoplay = true;
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.preload = "auto";
-    video.src = value;
-    container.appendChild(video);
-    return;
+  const imageUrl = resolveAssetUrl(fallbackImageUrl);
+  if (imageUrl) {
+    const img = document.createElement("img");
+    img.src = imageUrl;
+    img.alt = "";
+    img.draggable = false;
+    container.appendChild(img);
   }
-
-  const embedUrl = toBackgroundEmbedUrl(value);
-  if (!embedUrl) {
-    return;
-  }
-
-  const iframe = document.createElement("iframe");
-  iframe.src = embedUrl;
-  iframe.title = "Header background video";
-  iframe.loading = "eager";
-  iframe.allow = "autoplay; fullscreen; picture-in-picture";
-  iframe.referrerPolicy = "strict-origin-when-cross-origin";
-  container.appendChild(iframe);
-}
-
-function setHeroBackground(imageUrl) {
-  const resolvedImageUrl = resolveAssetUrl(imageUrl);
-  if (!resolvedImageUrl) {
-    document.documentElement.style.removeProperty("--hero-image");
-    return;
-  }
-  const safeUrl = resolvedImageUrl.replace(/"/g, '\\"');
-  document.documentElement.style.setProperty("--hero-image", `url("${safeUrl}")`);
 }
 
 async function fetchLocalizedData(lang, fileName) {
@@ -638,8 +631,7 @@ async function renderWebsite(lang) {
   renderWeddingDetails(site, lang);
   setText("story-text", site.story);
   setText("footer-note", site.footerNote);
-  setHeroBackground(site.heroImageUrl);
-  renderHeroMedia(site.heroVideoUrl || site.videoUrl);
+  renderHeroMedia(site.heroVideoUrl || site.videoUrl, site.heroImageUrl);
   renderCounterPhoto(site.photos);
   renderDispersedPhotos(site.photos);
   renderSchedule(schedule);

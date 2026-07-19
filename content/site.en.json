@@ -8,9 +8,8 @@
   "weddingLocationUrl": "https://maps.app.goo.gl/dSUGdZVNi2tDSUFt7",
   "heroImageUrl": "assets/uploads/hero-photo.jpg",
   "photos": [
-    "assets/uploads/hero-photo.jpg",
-    "assets/uploads/gallery-1.jpg",
     "assets/uploads/gallery-2.jpg",
+    "assets/uploads/gallery-1.jpg",
     "assets/uploads/gallery-3.png"
   ],
   "videoUrl": "assets/uploads/video_wind.mp4",
