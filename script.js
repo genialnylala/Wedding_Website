@@ -277,7 +277,6 @@ function renderWeddingDetails(site, lang) {
     } else {
       church.textContent = site.weddingChurchName;
     }
-    locationEl.appendChild(document.createElement("br"));
     locationEl.appendChild(church);
   }
 

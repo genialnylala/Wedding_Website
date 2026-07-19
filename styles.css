@@ -284,9 +284,11 @@ main {
 }
 
 .wedding-highlight-church {
+  display: block;
   font-size: clamp(0.85rem, 2vw, 1.1rem);
   font-family: "Cormorant", "Segoe UI", sans-serif;
   color: #755f52;
+  margin-top: 1.25rem;
 }
 
 .wedding-highlight-church a {
