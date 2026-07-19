@@ -156,51 +156,216 @@ function applyUiText(lang) {
   }
 }
 
-function renderSchedule(events) {
-  const list = byId("schedule-list");
-  if (!list) {
-    throw new Error("Missing schedule list element.");
+function renderInline(text) {
+  const fragment = document.createDocumentFragment();
+  const parts = String(text).split(/\*\*(.+?)\*\*/g);
+  for (let i = 0; i < parts.length; i++) {
+    if (i % 2 === 1) {
+      const strong = document.createElement("strong");
+      strong.textContent = parts[i];
+      fragment.appendChild(strong);
+    } else if (parts[i]) {
+      fragment.appendChild(document.createTextNode(parts[i]));
+    }
   }
+  return fragment;
+}
 
-  list.innerHTML = "";
-  for (const event of events) {
-    const item = document.createElement("li");
-    const title = document.createElement("p");
-    title.className = "event-title";
-    title.textContent = event.title;
-
-    const dateAndTime = document.createElement("p");
-    dateAndTime.className = "event-meta";
-    dateAndTime.textContent = `${event.date} • ${event.time}`;
-
-    const location = document.createElement("p");
-    location.className = "event-meta";
-    location.textContent = event.location;
-
-    item.append(title, dateAndTime, location);
-    list.appendChild(item);
+function renderBlocks(container, blocks) {
+  for (const block of blocks) {
+    if (block.type === "paragraph") {
+      const p = document.createElement("p");
+      p.className = "rich-paragraph";
+      p.appendChild(renderInline(block.text));
+      container.appendChild(p);
+    } else if (block.type === "heading3") {
+      const h = document.createElement("h3");
+      h.className = "rich-subheading";
+      h.textContent = block.text;
+      container.appendChild(h);
+    } else if (block.type === "list") {
+      const ul = document.createElement("ul");
+      ul.className = "rich-list";
+      for (const item of block.items) {
+        const li = document.createElement("li");
+        li.appendChild(renderInline(item));
+        ul.appendChild(li);
+      }
+      container.appendChild(ul);
+    } else if (block.type === "callout") {
+      const div = document.createElement("div");
+      div.className = "rich-callout";
+      if (block.title) {
+        const titleEl = document.createElement("p");
+        titleEl.className = "rich-callout-title";
+        titleEl.textContent = block.title;
+        div.appendChild(titleEl);
+      }
+      const textEl = document.createElement("p");
+      textEl.className = "rich-callout-text";
+      textEl.appendChild(renderInline(block.text));
+      div.appendChild(textEl);
+      container.appendChild(div);
+    }
   }
 }
 
-function renderTravel(details) {
-  const list = byId("travel-list");
-  if (!list) {
-    throw new Error("Missing travel list element.");
+function renderSchedule(scheduleData) {
+  const container = byId("schedule-content");
+  if (!container) {
+    throw new Error("Missing schedule content element.");
   }
 
-  list.innerHTML = "";
-  for (const detail of details) {
-    const item = document.createElement("li");
-    const label = document.createElement("p");
-    label.className = "event-title";
-    label.textContent = detail.label;
+  container.innerHTML = "";
 
-    const value = document.createElement("p");
-    value.className = "detail-value";
-    value.textContent = detail.value;
+  if (scheduleData.days) {
+    if (scheduleData.celebration) {
+      const celebDiv = document.createElement("div");
+      celebDiv.className = "rich-section";
+      const celebHeading = document.createElement("h3");
+      celebHeading.className = "rich-section-heading";
+      celebHeading.textContent = scheduleData.celebration.heading;
+      celebDiv.appendChild(celebHeading);
+      renderBlocks(celebDiv, scheduleData.celebration.blocks || []);
+      container.appendChild(celebDiv);
+    }
 
-    item.append(label, value);
-    list.appendChild(item);
+    const daysDiv = document.createElement("div");
+    daysDiv.className = "rich-section";
+    for (const day of scheduleData.days) {
+      const dayDiv = document.createElement("div");
+      dayDiv.className = "schedule-day";
+
+      const dayTitle = document.createElement("h3");
+      dayTitle.className = "schedule-day-title";
+      dayTitle.textContent = day.title;
+      dayDiv.appendChild(dayTitle);
+
+      if (day.date) {
+        const datePara = document.createElement("p");
+        datePara.className = "schedule-day-date";
+        datePara.textContent = day.date;
+        dayDiv.appendChild(datePara);
+      }
+
+      for (const slot of (day.slots || [])) {
+        const slotDiv = document.createElement("div");
+        slotDiv.className = "schedule-slot";
+
+        const timeEl = document.createElement("p");
+        timeEl.className = "schedule-slot-time";
+        timeEl.textContent = slot.time;
+
+        const titleEl = document.createElement("p");
+        titleEl.className = "schedule-slot-title";
+        titleEl.appendChild(renderInline(slot.title));
+
+        slotDiv.append(timeEl, titleEl);
+
+        for (const note of (slot.notes || [])) {
+          const noteEl = document.createElement("p");
+          noteEl.className = "schedule-slot-note";
+          noteEl.appendChild(renderInline(note));
+          slotDiv.appendChild(noteEl);
+        }
+
+        dayDiv.appendChild(slotDiv);
+      }
+
+      if (day.checklist) {
+        const callout = document.createElement("div");
+        callout.className = "rich-callout";
+        const calloutTitle = document.createElement("p");
+        calloutTitle.className = "rich-callout-title";
+        calloutTitle.textContent = "Don't forget:";
+        callout.appendChild(calloutTitle);
+        const ul = document.createElement("ul");
+        ul.className = "rich-list";
+        for (const item of day.checklist) {
+          const li = document.createElement("li");
+          li.textContent = item;
+          ul.appendChild(li);
+        }
+        callout.appendChild(ul);
+        dayDiv.appendChild(callout);
+      }
+
+      daysDiv.appendChild(dayDiv);
+    }
+    container.appendChild(daysDiv);
+
+    if (scheduleData.finalNote) {
+      const noteDiv = document.createElement("div");
+      noteDiv.className = "rich-section rich-final-note";
+      if (scheduleData.finalNote.heading) {
+        const h = document.createElement("h3");
+        h.className = "rich-section-heading";
+        h.textContent = scheduleData.finalNote.heading;
+        noteDiv.appendChild(h);
+      }
+      const p = document.createElement("p");
+      p.className = "rich-paragraph";
+      p.appendChild(renderInline(scheduleData.finalNote.text));
+      noteDiv.appendChild(p);
+      container.appendChild(noteDiv);
+    }
+  } else if (scheduleData.events) {
+    const list = document.createElement("ul");
+    list.className = "event-list";
+    for (const event of scheduleData.events) {
+      const item = document.createElement("li");
+      const title = document.createElement("p");
+      title.className = "event-title";
+      title.textContent = event.title;
+      const dateAndTime = document.createElement("p");
+      dateAndTime.className = "event-meta";
+      dateAndTime.textContent = `${event.date} • ${event.time}`;
+      const location = document.createElement("p");
+      location.className = "event-meta";
+      location.textContent = event.location;
+      item.append(title, dateAndTime, location);
+      list.appendChild(item);
+    }
+    container.appendChild(list);
+  }
+}
+
+function renderTravel(travelData) {
+  const container = byId("travel-content");
+  if (!container) {
+    throw new Error("Missing travel content element.");
+  }
+
+  container.innerHTML = "";
+
+  if (travelData.sections) {
+    for (const section of travelData.sections) {
+      const sectionDiv = document.createElement("div");
+      sectionDiv.className = "rich-section";
+      if (section.heading) {
+        const h = document.createElement("h3");
+        h.className = "rich-section-heading";
+        h.textContent = section.heading;
+        sectionDiv.appendChild(h);
+      }
+      renderBlocks(sectionDiv, section.blocks || []);
+      container.appendChild(sectionDiv);
+    }
+  } else if (travelData.details) {
+    const list = document.createElement("ul");
+    list.className = "details-list";
+    for (const detail of travelData.details) {
+      const item = document.createElement("li");
+      const label = document.createElement("p");
+      label.className = "event-title";
+      label.textContent = detail.label;
+      const value = document.createElement("p");
+      value.className = "detail-value";
+      value.textContent = detail.value;
+      item.append(label, value);
+      list.appendChild(item);
+    }
+    container.appendChild(list);
   }
 }
 
@@ -477,8 +642,8 @@ async function renderWebsite(lang) {
   renderHeroMedia(site.heroVideoUrl || site.videoUrl);
   renderCounterPhoto(site.photos);
   renderDispersedPhotos(site.photos);
-  renderSchedule(schedule.events);
-  renderTravel(travel.details);
+  renderSchedule(schedule);
+  renderTravel(travel);
   renderFaq(faq.items);
 }
 

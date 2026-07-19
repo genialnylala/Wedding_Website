@@ -1,20 +1,168 @@
 {
-  "details": [
+  "sections": [
     {
-      "label": "Wedding Location",
-      "value": "Patmos, Greece."
+      "heading": "Getting to Patmos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Ok here comes the fun! The adventure starts before the wedding!\n\nAs Patmos doesn't have an airport, you'll first need to fly to **Kos (KGS)**, **Rhodes (RHO)** or **Athens (ATH)** and then continue by ferry. Patmos is connected by ferry with all three destinations."
+        },
+        {
+          "type": "heading3",
+          "text": "Flying to Kos or Rhodes"
+        },
+        {
+          "type": "paragraph",
+          "text": "For many of our guests, Kos or Rhodes will be the easiest option.\n\nRyanair and other airlines usually release their summer schedules from January onwards. Depending on where you're travelling from, return flights can often be found from around €100.\n\nOnce you arrive, there are buses and taxis connecting the airports to the ferry ports. We will try to post the ferry schedule link here. In Rhodes, Google Maps works perfectly."
+        },
+        {
+          "type": "heading3",
+          "text": "Flying to Athens"
+        },
+        {
+          "type": "paragraph",
+          "text": "Athens is often one of the cheapest options.\n\nIf you fly into Athens, make sure to allow enough time to get from the airport to the Port of Piraeus:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Approximately 1 hour by taxi",
+            "Approximately 1.5 hours by public transport"
+          ]
+        },
+        {
+          "type": "heading3",
+          "text": "Ferry to Patmos"
+        },
+        {
+          "type": "paragraph",
+          "text": "After landing, you'll need to catch a ferry to Patmos.\n\nWe strongly recommend leaving at least **1–2 hours between your flight arrival and ferry departure**. Island travel is usually relaxed, but ferries won't wait if your flight is delayed!"
+        },
+        {
+          "type": "heading3",
+          "text": "Approximate Ferry Times"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**From Kos:** 2–4 hours",
+            "**From Rhodes:** 4–7 hours (depending on which boat and which day you choose)",
+            "**From Athens (Piraeus):** 7–9 hours"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "We'll share more detailed ferry information and recommended connections once the summer schedules are released."
+        },
+        {
+          "type": "callout",
+          "title": "🇬🇷 A Small Greek Island Tip",
+          "text": "Patmos is not the easiest island to get to—and that's part of what makes it special.\n\nDon't schedule tight connections. Grab a coffee at the port (freddooooo espressooo please!), enjoy the ferry ride, look at the sea, and switch into island mode. The pace is slower here, and that's exactly why we love it.\n\nJune is one of our favourite times on Patmos: warm weather, beautiful swimming conditions, and a much more relaxed atmosphere than the peak summer months."
+        }
+      ]
     },
     {
-      "label": "Weather",
-      "value": "Welcome to Rome! You can expect warm, sunny weather—usually around 28–34°C in the day—with lovely evenings. Light clothes and plenty of water are definitely recommended."
+      "heading": "Accommodation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We're currently arranging special rates with selected hotels and apartments in Skala where the party will be, and will update this section as soon as everything is confirmed."
+        }
+      ]
     },
     {
-      "label": "Parking",
-      "value": "There’s plenty of free parking close to the entrance of the venue."
+      "heading": "Getting Around",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We highly recommend renting:"
+        },
+        {
+          "type": "list",
+          "items": ["A car", "A scooter", "An ATV"]
+        },
+        {
+          "type": "paragraph",
+          "text": "Patmos is small, but having your own transportation makes it easy to discover beautiful beaches, viewpoints, and hidden corners of the island.\n\nThere is a bus as well with some options available!\n\nTaxis are limited and a bit expensive, especially during the summer, so having your own wheels can be very handy."
+        }
+      ]
     },
     {
-      "label": "Accessibility",
-      "value": "Yes! We’ll have a buggy available for anyone who needs a hand getting around the grounds."
+      "heading": "Our Favourite Restaurants",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "These are some of our personal favourites:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Pernera Vegan Restaurant",
+            "Pantelis",
+            "To Trehantiri",
+            "Ta Kavourakia",
+            "Medusa",
+            "Floisvos at Groikos",
+            "Diogenis for Pizza at Groikos",
+            "Atmos"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "(Google Maps links coming soon)"
+        }
+      ]
+    },
+    {
+      "heading": "Things to Do in Patmos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Patmos is famous for its peaceful atmosphere, beautiful beaches, and unique history."
+        },
+        {
+          "type": "heading3",
+          "text": "Must-See Places"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Monastery of Saint John the Theologian (UNESCO World Heritage Site)",
+            "Cave of the Apocalypse",
+            "Wander around the beautiful streets of Chora (Pirate History)",
+            "Explore Skala Harbour"
+          ]
+        },
+        {
+          "type": "heading3",
+          "text": "Beaches & Nature"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Psili Ammos — a day here is always magical! Try to start early: drive 15 min then walk 30 min through the mountain. Easy path with beautiful views.",
+            "Vagia Beach",
+            "Livadi Geranou Beach",
+            "Kampos Beach",
+            "Sunset from Profitis Ilias",
+            "Ancient Acropolis hike for sunrise or sunset",
+            "Sunset from Chora"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "🚌 Transportation During the Wedding Weekend",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "To make everything comfortable, we'll arrange transportation for parts of the wedding weekend."
+        },
+        {
+          "type": "callout",
+          "text": "**If you would like a seat on the bus on Friday and/or Saturday, please send us a WhatsApp message and let us know.**\n\nMore details about pick-up points and timings will follow closer to the wedding."
+        }
+      ]
     }
   ]
 }

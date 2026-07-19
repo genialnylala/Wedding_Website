@@ -1,22 +1,91 @@
 {
-  "events": [
+  "celebration": {
+    "heading": "Our Celebration",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "After the ceremony, we'll head back to **Pernera**, Eva's brother's restaurant in Skala, where we'll celebrate together with food, music, dancing, and a beautiful Patmian summer evening."
+      },
+      {
+        "type": "paragraph",
+        "text": "Pernera is in our family property and the house built by Eva's grandfather, **Manolis**. It is also where Eva's mum, **Anastasia**, grew up playing, spending long summers with family and friends. Eva also passed all of her summers there."
+      },
+      {
+        "type": "paragraph",
+        "text": "This little corner of Skala has been part of the family's story for generations, and that's why it means so much to us to celebrate our wedding here."
+      },
+      {
+        "type": "callout",
+        "text": "Don't expect a grand ballroom, fancy decorations, or a luxury wedding venue.\n\nExpect a relaxed Greek island celebration, great food, good company, plenty of dancing, and a summer evening under the stars.\n\nWe're so happy to be sharing this special place—and a small part of our family history—with all of you."
+      }
+    ]
+  },
+  "days": [
     {
-      "title": "Friday cocktail reception",
+      "title": "Friday – Beach & Sports Day 🏃‍♀️🏖",
       "date": "Friday, June 4, 2027",
-      "time": "TBD",
-      "location": "Patmos, Greece"
+      "slots": [
+        {
+          "time": "09:30",
+          "title": "5K Fun Run from Skala to Kampos",
+          "notes": [
+            "More details to follow.",
+            "For everyone who prefers a slower start to the day, a bus will leave from Skala at **10:00** and head to Kampos Beach."
+          ]
+        },
+        {
+          "time": "10:00+",
+          "title": "Beach Day at Kampos",
+          "notes": [
+            "We'll spend the day swimming, relaxing, enjoying the beach, and having some food together at Kavourakia."
+          ]
+        }
+      ],
+      "checklist": ["Swimwear", "Towel", "Sunscreen", "Hat", "Good mood"]
     },
     {
-      "title": "Ceremony",
+      "title": "Saturday – The Big Day ❤️",
       "date": "Saturday, June 5, 2027",
-      "time": "4:00 PM",
-      "location": "Patmos, Greece"
+      "slots": [
+        {
+          "time": "15:30",
+          "title": "Bus departure from Skala",
+          "notes": ["If you'd like a seat, please send us a WhatsApp message."]
+        },
+        {
+          "time": "16:00",
+          "title": "Wedding Ceremony"
+        },
+        {
+          "time": "17:15",
+          "title": "Photos & Vows next to the church"
+        },
+        {
+          "time": "17:45",
+          "title": "Celebration at Pernera",
+          "notes": ["Back to Pernera, where the food, drinks, music, and dancing begin."]
+        }
+      ]
     },
     {
-      "title": "Sunday brunch",
+      "title": "Sunday – Optional Boat Adventure ⛵",
       "date": "Sunday, June 6, 2027",
-      "time": "TBD",
-      "location": "Patmos, Greece"
+      "slots": [
+        {
+          "time": "10:00–18:00",
+          "title": "Boat Trip Around the Island",
+          "notes": [
+            "If the weather is on our side (and the wind decides to cooperate!), we're planning a boat trip around the island.",
+            "We'll organise a group discount and share the final price once we know how many people would like to join.",
+            "If you're interested, please let us know by WhatsApp when you RSVP.",
+            "It's a perfect way to discover some hidden beaches, enjoy one more day together, and recover from Saturday night's dancing—or continue the celebrations a little longer. 🌊☀️🍷"
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "finalNote": {
+    "heading": "A Final Note ❤️",
+    "text": "We know that getting to Patmos takes a little more effort than flying directly to a big city or resort.\n\nThank you for making the journey.\n\nWe're incredibly grateful that you'll be travelling all this way to celebrate with us, and we can't wait to share our favourite island, our favourite places, and one unforgettable weekend with all of you. 🇬🇷✨🌊🥂"
+  }
 }
