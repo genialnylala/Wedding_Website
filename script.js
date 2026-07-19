@@ -261,7 +261,25 @@ function formatCountdownText(dayDifference, lang) {
 
 function renderWeddingDetails(site, lang) {
   setText("wedding-date", site.weddingDate || "—");
-  setText("wedding-location", site.weddingLocation || "—");
+  const locationEl = byId("wedding-location");
+  if (!locationEl) throw new Error("Missing element: #wedding-location");
+  locationEl.textContent = site.weddingLocation || "—";
+  if (site.weddingChurchName) {
+    const church = document.createElement("span");
+    church.className = "wedding-highlight-church";
+    if (site.weddingLocationUrl) {
+      const link = document.createElement("a");
+      link.href = site.weddingLocationUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = site.weddingChurchName;
+      church.appendChild(link);
+    } else {
+      church.textContent = site.weddingChurchName;
+    }
+    locationEl.appendChild(document.createElement("br"));
+    locationEl.appendChild(church);
+  }
 
   const weddingDate = parseWeddingDate(site);
   if (!weddingDate) {

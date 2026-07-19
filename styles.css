@@ -211,6 +211,35 @@ main {
     url("assets/uploads/between-hero-gallery3-bg.png") center top / contain no-repeat;
 }
 
+.church-view-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+  border-radius: 1.4rem;
+  overflow: hidden;
+}
+
+.church-view-gallery img {
+  width: 100%;
+  height: clamp(180px, 35vw, 520px);
+  object-fit: cover;
+  display: block;
+}
+
+.church-map {
+  border-radius: 1.4rem;
+  overflow: hidden;
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+}
+
+.church-map iframe {
+  width: 100%;
+  height: clamp(280px, 50vw, 500px);
+  border: 0;
+  display: block;
+}
+
 #photo-scatter-3 {
   margin-top: clamp(1.2rem, 2.8vw, 2.2rem);
 }
@@ -252,6 +281,18 @@ main {
   font-family: "Cormorant", "Segoe UI", sans-serif;
   font-weight: 400;
   line-height: 1.2;
+}
+
+.wedding-highlight-church {
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-family: "Cormorant", "Segoe UI", sans-serif;
+  color: #755f52;
+}
+
+.wedding-highlight-church a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .wedding-highlight-countdown {
