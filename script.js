@@ -81,6 +81,9 @@ function resolveAssetUrl(input) {
   if (!value) {
     return "";
   }
+  if (/^http:\/\//i.test(value) && window.location.protocol === "https:") {
+    return value.replace(/^http:\/\//i, "https://");
+  }
   if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(value)) {
     return value;
   }

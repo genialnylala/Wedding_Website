@@ -22,6 +22,8 @@ Media paths work with GitHub Pages project URLs (for example `https://<user>.git
 - `assets/uploads/file.jpg` (preferred)
 - `/assets/uploads/file.jpg` (still supported by runtime normalization)
 
+When the page is served over HTTPS, media URLs that start with `http://` are automatically upgraded to `https://` to avoid mixed-content blocking.
+
 ## Languages
 
 The site supports three languages:
