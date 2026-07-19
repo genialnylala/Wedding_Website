@@ -323,6 +323,12 @@ main {
   font-weight: 600;
 }
 
+.story-label {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-family: "Mynerve", Georgia, "Times New Roman", serif;
+}
+
 .story-card {
   text-align: center;
   padding-left: clamp(1.2rem, 5vw, 4.2rem);
@@ -332,7 +338,7 @@ main {
 h2 {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-family: "Mynerve", Georgia, "Times New Roman", serif;
   font-size: clamp(1.85rem, 3.8vw, 2.4rem);
   font-weight: 600;
   line-height: 1.1;

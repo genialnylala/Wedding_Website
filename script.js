@@ -16,7 +16,7 @@ const UI_TEXT = {
     countdownDaysAgoSingular: "day",
     countdownDaysAgoPlural: "days",
     storyLabel: "Who are we?",
-    storyTitle: "Our Story",
+    storyTitle: "Who are we?",
     scheduleLabel: "Schedule",
     scheduleTitle: "Wedding Weekend",
     travelLabel: "Travel",
