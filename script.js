@@ -66,9 +66,10 @@ const UI_TEXT = {
 };
 
 async function fetchJson(path) {
-  const response = await fetch(path);
+  const requestUrl = new URL(path, SITE_BASE_URL);
+  const response = await fetch(requestUrl.toString());
   if (!response.ok) {
-    throw new Error(`Failed to load ${path}: ${response.status} ${response.statusText}`);
+    throw new Error(`Failed to load ${requestUrl.toString()}: ${response.status} ${response.statusText}`);
   }
   return response.json();
 }
@@ -90,7 +91,7 @@ function resolveAssetUrl(input) {
   if (value.startsWith("/")) {
     return new URL(value.slice(1), SITE_BASE_URL).toString();
   }
-  return value;
+  return new URL(value, SITE_BASE_URL).toString();
 }
 
 function setText(id, value) {
