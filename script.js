@@ -19,6 +19,7 @@ const UI_TEXT = {
     storyTitle: "Who are we?",
     scheduleLabel: "Schedule",
     scheduleTitle: "Wedding Weekend",
+    scheduleChecklistTitle: "Don't forget:",
     travelLabel: "Travel",
     travelTitle: "Travel & Stay",
     faqTitle: "Guest Questions",
@@ -38,6 +39,7 @@ const UI_TEXT = {
     storyTitle: "Nasza historia",
     scheduleLabel: "Plan",
     scheduleTitle: "Weekend ślubny",
+    scheduleChecklistTitle: "Nie zapomnij:",
     travelLabel: "Podróż",
     travelTitle: "Dojazd i nocleg",
     faqTitle: "Pytania gości",
@@ -57,6 +59,7 @@ const UI_TEXT = {
     storyTitle: "Η ιστορία μας",
     scheduleLabel: "Πρόγραμμα",
     scheduleTitle: "Πρόγραμμα γάμου",
+    scheduleChecklistTitle: "Μην ξεχάσετε:",
     travelLabel: "Ταξίδι",
     travelTitle: "Μετακίνηση και διαμονή",
     faqTitle: "Ερωτήσεις καλεσμένων",
@@ -211,7 +214,7 @@ function renderBlocks(container, blocks) {
   }
 }
 
-function renderSchedule(scheduleData) {
+function renderSchedule(scheduleData, lang) {
   const container = byId("schedule-content");
   if (!container) {
     throw new Error("Missing schedule content element.");
@@ -278,7 +281,7 @@ function renderSchedule(scheduleData) {
         callout.className = "rich-callout";
         const calloutTitle = document.createElement("p");
         calloutTitle.className = "rich-callout-title";
-        calloutTitle.textContent = "Don't forget:";
+        calloutTitle.textContent = (UI_TEXT[lang] || UI_TEXT[DEFAULT_LANG]).scheduleChecklistTitle;
         callout.appendChild(calloutTitle);
         const ul = document.createElement("ul");
         ul.className = "rich-list";
@@ -638,7 +641,7 @@ async function renderWebsite(lang) {
   renderHeroMedia(site.heroVideoUrl || site.videoUrl, site.heroImageUrl);
   renderCounterPhoto(site.photos);
   renderDispersedPhotos(site.photos);
-  renderSchedule(schedule);
+  renderSchedule(schedule, lang);
   renderTravel(travel);
   renderFaq(faq.items);
 }
